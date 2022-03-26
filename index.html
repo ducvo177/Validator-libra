@@ -41,9 +41,15 @@
           rules:[
               Validator.isRequired('#fullname'),
               Validator.isEmail('#email'),
-              Validator.isRequired('#password'),
-              Validator.isRequired('#password_confirmation')
-          ]
+              Validator.isRequired('#email'),
+              Validator.minLength('#password'),
+              Validator.isComfirmed('#password_confirmation',function(){
+                return document.querySelector('#form-1 #password').value;
+              },'Mật khẩu nhập lại không chính xác')
+          ],
+          onSubmit:function(data){
+          console.log(data);
+          }
       });
   </script>
   
